@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "services": "Xizmatlar",
+    "projects": "Loyihalar",
+    "blog": "Blog",
+    "contact": "Bog'lanish",
+    "cta": "Bog'lanish"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "available": "Ish uchun ochiq",
+    "desc": "Zamonaviy web ilovalar yaratuvchi Frontend muhandis. Foydalanuvchi tajribasiga e'tibor qaratib, toza va samarali kod yozaman.",
+    "btn_projects": "Loyihalar →",
+    "btn_contact": "Bog'lanish",
+    "open": "Yangi loyihalarga ochiqman"
+  },
+  "about": {
+    "tag": "// haqimda",
+    "title": "Frontend hunarmand",
+    "available": "Yangi imkoniyatlarga ochiqman"
+  },
+  "services": {
+    "tag": "// xizmatlar",
+    "title": "Nima qila olaman?",
+    "subtitle": "Frontend muhandisi sifatida taklif etadigan asosiy xizmatlarim",
+    "cta": "Buyurtma berish →"
+  },
+  "projects": {
+    "tag": "// loyihalar",
+    "title": "Tanlangan ishlar",
+    "subtitle": "Real loyihalar va amaliy tajriba",
+    "all": "Barchasi →"
+  },
+  "blog": {
+    "tag": "// blog",
+    "title": "So'nggi maqolalar",
+    "subtitle": "Texnologiya va frontend haqida yozaman",
+    "all": "Barcha maqolalar →"
+  },
+  "contact": {
+    "tag": "// bog'lanish",
+    "title": "Sizning g'oyangiz + mening kodim",
+    "subtitle": "Yangi loyiha, freelance hamkorlik yoki shunchaki salomlashmoqchimisiz? Murojaat qiling.",
+    "email": "Email jo'natish",
+    "open": "Yangi loyihalarga ochiqman"
+  },
+  "footer": {
+    "copy": "Barcha huquqlar himoyalangan",
+    "home": "Bosh sahifa",
+    "projects": "Loyihalar",
+    "blog": "Blog"
+  },
+  "notFound": {
+    "badge": "Sahifa topilmadi",
+    "title": "Bu sahifa mavjud emas",
+    "desc": "Siz qidirayotgan sahifa o'chirilgan, ko'chirilgan yoki hech qachon mavjud bo'lmagan.",
+    "back": "Bosh sahifaga qaytish"
+  }
+}

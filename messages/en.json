@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact",
+    "cta": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "available": "Available for work",
+    "desc": "A Frontend engineer building modern web applications. I write clean, efficient code with a focus on user experience.",
+    "btn_projects": "Projects →",
+    "btn_contact": "Contact",
+    "open": "Open to new opportunities"
+  },
+  "about": {
+    "tag": "// about",
+    "title": "Frontend craftsman",
+    "available": "Open to new opportunities"
+  },
+  "services": {
+    "tag": "// services",
+    "title": "What I can do",
+    "subtitle": "Core services I offer as a frontend engineer",
+    "cta": "Request →"
+  },
+  "projects": {
+    "tag": "// projects",
+    "title": "Selected works",
+    "subtitle": "Real projects and practical experience",
+    "all": "All projects →"
+  },
+  "blog": {
+    "tag": "// blog",
+    "title": "Latest articles",
+    "subtitle": "I write about technology and frontend",
+    "all": "All articles →"
+  },
+  "contact": {
+    "tag": "// contact",
+    "title": "Your idea + my code",
+    "subtitle": "New project, freelance collaboration or just saying hello? Get in touch.",
+    "email": "Send email",
+    "open": "Open to new opportunities"
+  },
+  "footer": {
+    "copy": "All rights reserved",
+    "home": "Home",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
+  "notFound": {
+    "badge": "Page not found",
+    "title": "This page doesn't exist",
+    "desc": "The page you're looking for has been deleted, moved, or never existed.",
+    "back": "Back to home"
+  }
+}

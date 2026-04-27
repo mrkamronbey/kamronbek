@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────
+   Raw design tokens in :root
+   html.light overrides them → Tailwind picks up changes via var()
+   ───────────────────────────────────────── */
+:root {
+  --canvas:   #0a0a0f;
+  --surface:  #111118;
+  --elevated: #18181f;
+  --accent:   #5b8def;
+  --accent2:  #a78bfa;
+  --content:  #e8e8f0;
+  --muted:    #8888a0;
+  --success:  #34d399;
+  --line:     rgba(255, 255, 255, 0.07);
+
+  /* ── Border radius tokens — shu yerdan o'zgartiring ── */
+  --r-sm:   6px;   /* tags, chips, kichik elementlar   */
+  --r-md:  10px;   /* tugmalar, inputlar               */
+  --r-lg:  14px;   /* barcha card'lar                  */
+  --r-xl:  20px;   /* katta card container'lar         */
+  --r-2xl: 24px;   /* browser window, rasm ramkasi     */
+
+  /* ── Shadow tokens ── */
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.22);
+  --shadow-card-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Light mode ── */
+html.light {
+  --canvas:   #f8f8fc;
+  --surface:  #f0f0f7;
+  --elevated: #e8e8f2;
+  --content:  #0a0a0f;
+  --muted:    #666680;
+  --line:     rgba(0, 0, 0, 0.08);
+
+  --shadow-card: 0 4px 20px rgba(99, 102, 128, 0.10);
+  --shadow-card-lg: 0 8px 32px rgba(99, 102, 128, 0.14);
+}
+
+/* ─────────────────────────────────────────
+   Tailwind @theme — references :root vars
+   (Tailwind doesn't parse the rgba value itself,
+    just stores var() reference → border/bg use correct opacity)
+   ───────────────────────────────────────── */
+@theme {
+  --color-canvas:   var(--canvas);
+  --color-surface:  var(--surface);
+  --color-elevated: var(--elevated);
+  --color-accent:   var(--accent);
+  --color-accent2:  var(--accent2);
+  --color-content:  var(--content);
+  --color-muted:    var(--muted);
+  --color-success:  var(--success);
+  --color-line:     var(--line);
+
+  /* Radius tokens → Tailwind rounded-* classlar */
+  --radius-sm:  var(--r-sm);
+  --radius-md:  var(--r-md);
+  --radius-lg:  var(--r-lg);
+  --radius-xl:  var(--r-xl);
+  --radius-2xl: var(--r-2xl);
+
+  --font-sans: var(--font-geologica), "Geologica", sans-serif;
+  --font-mono: var(--font-space-mono), "Space Mono",
+               var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+
+  --animate-blink: blink 2s infinite;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-content);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.25s, color 0.25s;
+}
+
+::selection { background: var(--accent); color: #fff; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--canvas); }
+::-webkit-scrollbar-thumb { background: var(--elevated); border-radius: 3px; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* Hero photo — floating mask (background removal simulation) */
+.photo-float {
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Hero photo — rotating gradient border */
+.hero-photo-border {
+  background: conic-gradient(
+    from 0deg,
+    var(--color-accent),
+    var(--color-accent2),
+    var(--color-accent),
+    var(--color-accent2),
+    var(--color-accent)
+  );
+  animation: spin-slow 4s linear infinite;
+}
+
+/* ── Complex gradients / filters only ── */
+@layer utilities {
+  .hero-bg-grid {
+    background-image:
+      linear-gradient(rgba(91,141,239,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,141,239,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 40%, transparent 100%);
+  }
+  .glow-blue   { background: radial-gradient(circle, rgba(91,141,239,0.12)  0%, transparent 70%); }
+  .glow-purple { background: radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 70%); }
+  .glow-photo  { background: radial-gradient(circle, rgba(91,141,239,0.15)  0%, transparent 70%); }
+  .gradient-accent   { background: linear-gradient(135deg, var(--accent),  var(--accent2)); }
+  .gradient-accent-h { background: linear-gradient(90deg,  var(--accent),  var(--accent2)); }
+  .blog-thumb-bg     { background: linear-gradient(135deg, rgba(91,141,239,0.08), rgba(167,139,250,0.08)); }
+  .hero-photo        { filter: grayscale(15%); transition: filter 0.3s; }
+  .hero-photo:hover  { filter: grayscale(0%); }
+}

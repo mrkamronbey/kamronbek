@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About"
+  },
+  "home": {
+    "title": "Welcome",
+    "description": "This is a Next.js project"
+  },
+  "about": {
+    "title": "About",
+    "description": "Information about this project"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "about": "Haqida"
+  },
+  "home": {
+    "title": "Xush kelibsiz",
+    "description": "Bu Next.js loyiha"
+  },
+  "about": {
+    "title": "Haqida",
+    "description": "Bu loyiha haqida ma'lumot"
+  }
+}
