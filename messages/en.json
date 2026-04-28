@@ -10,15 +10,33 @@
   "hero": {
     "greeting": "Hello, I'm",
     "available": "Available for work",
-    "desc": "A Frontend engineer building modern web applications. I write clean, efficient code with a focus on user experience.",
+    "desc": "Frontend Engineer — building real products for real users in logistics, sales systems, and mobile-first apps.",
     "btn_projects": "Projects →",
     "btn_contact": "Contact",
-    "open": "Open to new opportunities"
+    "open": "Open to new opportunities",
+    "cv": "Download CV",
+    "stat_exp": "Years exp",
+    "stat_projects": "Projects",
+    "stat_tech": "Technologies",
+    "skill1_label": "Frontend Engineer",
+    "skill1_sub": "React · Next.js · TypeScript",
+    "skill2_label": "UI Craftsman",
+    "skill2_sub": "Tailwind · Figma · SCSS",
+    "skill3_label": "25+ Projects",
+    "skill3_sub": "3+ years exp"
   },
   "about": {
     "tag": "// about",
-    "title": "Frontend craftsman",
+    "title": "Frontend engineer",
+    "bio1": "I'm a Frontend Engineer who enjoys building real, practical products — especially in logistics, sales systems, and mobile-first apps. Not just \"for demo\" — things that actually work for real users.",
+    "bio2": "Right now I'm building a driver–dispatcher platform, fuel management system, and parking tools at a logistics company. Working in logistics taught me one thing: a single good UI improvement can save an entire team hours of daily work.",
+    "bio3": "Web or mobile — maps, real-time updates, multi-step forms, dashboards — whatever the problem, I solve it with clean architecture and smooth UX.",
+    "bio4": "My goal is simple — build products that solve real problems and feel good to use.",
     "available": "Open to new opportunities"
+  },
+  "experience": {
+    "tag": "// experience",
+    "title": "Work history"
   },
   "services": {
     "tag": "// services",
@@ -43,7 +61,9 @@
     "title": "Your idea + my code",
     "subtitle": "New project, freelance collaboration or just saying hello? Get in touch.",
     "email": "Send email",
-    "open": "Open to new opportunities"
+    "open": "Open to new opportunities",
+    "form_title": "Send a message",
+    "form_sub": "I usually respond within 24 hours."
   },
   "footer": {
     "copy": "All rights reserved",

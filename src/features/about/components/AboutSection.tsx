@@ -14,7 +14,7 @@ export function AboutSection() {
   return (
     <section id="about" className="bg-canvas py-[100px]">
       <Container className="px-12 max-md:px-6">
-        <p className="font-mono text-xs text-accent tracking-[2px] uppercase mb-3">// haqimda</p>
+        <p className="font-mono text-xs text-accent tracking-[2px] uppercase mb-3">{`// haqimda`}</p>
         <h2 className="text-[clamp(28px,4vw,44px)] font-bold tracking-[-1px] leading-[1.1]">
           Frontend hunarmand
         </h2>
@@ -23,7 +23,7 @@ export function AboutSection() {
           <div>
             <div className="flex items-center gap-4 mb-6">
               <Image
-                src="/myphoto.jpg"
+                src="/myphoto.png"
                 alt="Kamronbek Sunnatov"
                 width={56}
                 height={56}

@@ -8,49 +8,51 @@
     "cta": "Bog'lanish"
   },
   "hero": {
-    "greeting": "Hello, I'm",
+    "greeting": "Salom, men",
     "available": "Ish uchun ochiq",
-    "desc": "Zamonaviy web ilovalar yaratuvchi Frontend muhandis. Foydalanuvchi tajribasiga e'tibor qaratib, toza va samarali kod yozaman.",
+    "desc": "Frontend Muhandisi — logistika, savdo tizimlari va mobil ilovalarda haqiqiy foydalanuvchilar uchun ishlaydigan mahsulotlar yarataman.",
     "btn_projects": "Loyihalar →",
     "btn_contact": "Bog'lanish",
-    "open": "Yangi loyihalarga ochiqman"
+    "open": "Yangi loyihalarga ochiqman",
+    "cv": "CV yuklab olish",
+    "stat_exp": "Yil tajriba",
+    "stat_projects": "Loyihalar",
+    "stat_tech": "Texnologiyalar",
+    "skill1_label": "Frontend Muhandisi",
+    "skill1_sub": "React · Next.js · TypeScript",
+    "skill2_label": "UI Craftsman",
+    "skill2_sub": "Tailwind · Figma · SCSS",
+    "skill3_label": "25+ Loyiha",
+    "skill3_sub": "3+ yil tajriba"
   },
   "about": {
     "tag": "// haqimda",
-    "title": "Frontend hunarmand",
+    "title": "Frontend muhandisi",
+    "bio1": "Men Frontend Engineer — React & React Native asosida logistika, savdo tizimlari va mobil ilovalarda amaliy mahsulotlar yarataman. Faqat demo uchun emas — haqiqiy foydalanuvchilar uchun ishlaydigan narsalar.",
+    "bio2": "Hozirda logistika kompaniyasida haydovchi–dispetcher platformasi, yoqilg'i boshqaruvi va parking tizimlarini ishlab chiqyapman. Logistikada ishlash menga bir narsani o'rgatdi: yaxshi UI bitta kichik yaxshilanish butun jamoaning soatlab vaqtini tejashi mumkin.",
+    "bio3": "Web va mobileda — xaritalar, real-time yangilanishlar, ko'p bosqichli formalar, dashboardlar... qaysi muammo bo'lmasin, uni toza arxitektura va silliq UX bilan hal qilaman.",
+    "bio4": "Maqsadim oddiy — foydalanuvchi muammosini hal qiladigan va ishlatishdan zavq beradigan mahsulotlar yaratish.",
     "available": "Yangi imkoniyatlarga ochiqman"
   },
+  "experience": { "tag": "// tajriba", "title": "Ish tarixi" },
   "services": {
     "tag": "// xizmatlar",
     "title": "Nima qila olaman?",
     "subtitle": "Frontend muhandisi sifatida taklif etadigan asosiy xizmatlarim",
     "cta": "Buyurtma berish →"
   },
-  "projects": {
-    "tag": "// loyihalar",
-    "title": "Tanlangan ishlar",
-    "subtitle": "Real loyihalar va amaliy tajriba",
-    "all": "Barchasi →"
-  },
-  "blog": {
-    "tag": "// blog",
-    "title": "So'nggi maqolalar",
-    "subtitle": "Texnologiya va frontend haqida yozaman",
-    "all": "Barcha maqolalar →"
-  },
+  "projects": { "tag": "// loyihalar", "title": "Tanlangan ishlar", "subtitle": "Real loyihalar va amaliy tajriba", "all": "Barchasi →" },
+  "blog": { "tag": "// blog", "title": "So'nggi maqolalar", "subtitle": "Texnologiya va frontend haqida yozaman", "all": "Barcha maqolalar →" },
   "contact": {
     "tag": "// bog'lanish",
     "title": "Sizning g'oyangiz + mening kodim",
     "subtitle": "Yangi loyiha, freelance hamkorlik yoki shunchaki salomlashmoqchimisiz? Murojaat qiling.",
     "email": "Email jo'natish",
-    "open": "Yangi loyihalarga ochiqman"
+    "open": "Yangi loyihalarga ochiqman",
+    "form_title": "Xabar yuboring",
+    "form_sub": "Odatda 24 soat ichida javob beraman."
   },
-  "footer": {
-    "copy": "Barcha huquqlar himoyalangan",
-    "home": "Bosh sahifa",
-    "projects": "Loyihalar",
-    "blog": "Blog"
-  },
+  "footer": { "copy": "Barcha huquqlar himoyalangan", "home": "Bosh sahifa", "projects": "Loyihalar", "blog": "Blog" },
   "notFound": {
     "badge": "Sahifa topilmadi",
     "title": "Bu sahifa mavjud emas",

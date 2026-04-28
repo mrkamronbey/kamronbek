@@ -5,6 +5,10 @@ import { routing } from "@/i18n/routing";
 import { Layout as PortfolioLayout } from "@/layout";
 import { I18nProvider } from "@/shared/components";
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params,

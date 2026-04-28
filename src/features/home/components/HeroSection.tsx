@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Mail, Code2, Paintbrush, BarChart3, Download } from "lucide-react";
 import { Container } from "@/shared/components";
 
@@ -24,13 +27,21 @@ const SOCIALS = [
   { icon: <InstagramIcon />,     href: "https://www.instagram.com/sunnatoff.dev/",              bg: "bg-elevated text-muted hover:text-content border border-line" },
 ];
 
-const SKILL_CARDS = [
-  { icon: Code2,      color: "text-accent   bg-accent/10",  label: "Frontend Engineer", sub: "React · Next.js · TypeScript" },
-  { icon: Paintbrush, color: "text-accent2  bg-accent2/10", label: "UI Craftsman",       sub: "Tailwind · Figma · SCSS" },
-  { icon: BarChart3,  color: "text-success  bg-success/10", label: "25+ Loyiha",         sub: "3+ yil tajriba" },
-];
-
 export function HeroSection() {
+  const t = useTranslations("hero");
+
+  const SKILL_CARDS = [
+    { icon: Code2,      color: "text-accent   bg-accent/10",  label: t("skill1_label"), sub: t("skill1_sub") },
+    { icon: Paintbrush, color: "text-accent2  bg-accent2/10", label: t("skill2_label"), sub: t("skill2_sub") },
+    { icon: BarChart3,  color: "text-success  bg-success/10", label: t("skill3_label"), sub: t("skill3_sub") },
+  ];
+
+  const STATS = [
+    { num: "3+",  label: t("stat_exp") },
+    { num: "25+", label: t("stat_projects") },
+    { num: "10+", label: t("stat_tech") },
+  ];
+
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-canvas">
       <div className="hero-bg-grid absolute inset-0 z-0" />
@@ -88,7 +99,7 @@ export function HeroSection() {
         {/* LEFT */}
         <div className="flex flex-col justify-center py-28 max-md:pt-24 max-md:pb-16">
 
-          <p className="font-mono text-[13px] text-muted mb-1 tracking-widest uppercase">Hello, I&apos;m</p>
+          <p className="font-mono text-[13px] text-muted mb-1 tracking-widest uppercase">{t("greeting")}</p>
 
           <h1 className="text-[clamp(34px,4.5vw,62px)] font-bold tracking-[-2px] leading-[1.06] mb-5">
             Kamronbek<br />
@@ -97,13 +108,11 @@ export function HeroSection() {
 
           <div className="inline-flex items-center gap-2 font-mono text-[12px] text-accent bg-accent/[0.08] border border-accent/20 px-3.5 py-1.5 rounded-full mb-5 self-start">
             <span className="w-1.5 h-1.5 bg-success rounded-full animate-blink" />
-            Ish uchun ochiq
+            {t("available")}
           </div>
 
           <p className="text-[15px] text-muted leading-[1.8] mb-7 max-w-[320px]">
-            Zamonaviy web ilovalar yaratuvchi Frontend muhandis.
-            Foydalanuvchi tajribasiga e&apos;tibor qaratib,
-            toza va samarali kod yozaman.
+            {t("desc")}
           </p>
 
           <div className="flex gap-2 mb-8">
@@ -126,13 +135,13 @@ export function HeroSection() {
               href="#projects"
               className="flex-1 inline-flex items-center justify-center gap-2 bg-accent text-white font-semibold text-[14px] px-5 py-3 rounded-lg no-underline hover:bg-[#4a7de0] transition-all"
             >
-              Loyihalar →
+              {t("btn_projects")}
             </Link>
             <Link
               href="/#contact"
               className="flex-1 inline-flex items-center justify-center gap-2 bg-surface text-content font-medium text-[14px] px-5 py-3 rounded-lg no-underline border border-accent/40 hover:border-accent transition-all"
             >
-              Bog&apos;lanish
+              {t("btn_contact")}
             </Link>
           </div>
           <a
@@ -141,16 +150,12 @@ export function HeroSection() {
             className="md:hidden inline-flex items-center justify-center gap-2 font-mono text-[13px] text-muted border border-line px-5 py-2.5 rounded-lg no-underline transition-all hover:text-content hover:border-accent/40"
           >
             <Download size={14} />
-            CV yuklab olish
+            {t("cv")}
           </a>
 
           {/* Mobile stats */}
           <div className="md:hidden flex gap-8 mb-10">
-            {[
-              { num: "3+",  label: "Yil tajriba" },
-              { num: "25+", label: "Loyihalar" },
-              { num: "10+", label: "Texnologiyalar" },
-            ].map(({ num, label }) => (
+            {STATS.map(({ num, label }) => (
               <div key={label}>
                 <div className="font-mono text-[24px] font-bold text-content tracking-[-1px]">{num}</div>
                 <div className="text-[12px] text-muted mt-0.5">{label}</div>
@@ -204,25 +209,25 @@ export function HeroSection() {
             );
           })}
 
-          {/* Available badge — kartalar bilan hizalangan (w-[320px]) */}
+          {/* Available badge */}
           <div className="w-[320px] flex items-center gap-2 bg-success/[0.08] border border-success/20 text-success text-[12px] font-mono px-4 py-2.5 rounded-lg">
             <span className="w-1.5 h-1.5 rounded-full bg-success animate-blink flex-shrink-0" />
-            Yangi loyihalarga ochiqman
+            {t("open")}
           </div>
 
-          {/* Buttons — w-[320px] bilan hizalangan */}
+          {/* Buttons */}
           <div className="flex gap-3 w-[320px]">
             <Link
               href="#projects"
               className="flex-1 inline-flex items-center justify-center gap-2 bg-accent text-white font-semibold text-[14px] px-5 py-3 rounded-lg no-underline hover:bg-[#4a7de0] transition-all hover:-translate-y-px"
             >
-              Loyihalar →
+              {t("btn_projects")}
             </Link>
             <Link
               href="/#contact"
               className="flex-1 inline-flex items-center justify-center gap-2 bg-surface text-content font-medium text-[14px] px-5 py-3 rounded-lg no-underline border border-accent/40 hover:border-accent hover:bg-accent/[0.08] transition-all"
             >
-              Bog&apos;lanish
+              {t("btn_contact")}
             </Link>
           </div>
 
@@ -233,7 +238,7 @@ export function HeroSection() {
             className="w-[320px] inline-flex items-center justify-center gap-2 font-mono text-[13px] text-muted border border-line px-5 py-2.5 rounded-lg no-underline transition-all hover:text-content hover:border-accent/40 hover:bg-accent/[0.04]"
           >
             <Download size={14} />
-            CV yuklab olish
+            {t("cv")}
           </a>
         </div>
       </Container>
