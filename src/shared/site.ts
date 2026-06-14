@@ -38,8 +38,8 @@ export const SOCIALS: Social[] = [
   {
     platform: "github",
     label: "GitHub",
-    value: "mrkamronbek",
-    href: "https://github.com/mrkamronbek",
+    value: "mrkamronbey",
+    href: "https://github.com/mrkamronbey",
     color: "text-content bg-content/10",
   },
   {
