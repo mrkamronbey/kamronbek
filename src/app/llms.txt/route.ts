@@ -1,6 +1,7 @@
 import { EXPERIENCE } from "@/features/home/data/experience";
 import { getProjects } from "@/features/projects/data/projects";
 import { SITE_URL } from "@/shared/seo";
+import { PERSON, SOCIALS } from "@/shared/site";
 
 export const dynamic = "force-static";
 
@@ -23,7 +24,8 @@ export function GET() {
     "- Title: Frontend Engineer (React, Next.js, TypeScript, React Native)",
     "- Location: Tashkent, Uzbekistan",
     `- Website: ${SITE_URL}`,
-    "- Email: komronbek.sunnatov@mail.ru",
+    `- Email: ${PERSON.email}`,
+    ...(PERSON.phones.length ? [`- Phone: ${PERSON.phones.join(", ")}`] : []),
     "- Languages: Uzbek (native), Russian, English",
     "- Status: Open to full-time roles, freelance and contract work",
     "",
@@ -40,10 +42,7 @@ export function GET() {
     "",
     "## Links",
     `- Website: ${SITE_URL}`,
-    "- GitHub: https://github.com/mrkamronbek",
-    "- LinkedIn: https://www.linkedin.com/in/komronbek-sunnatov-042922371/",
-    "- Telegram: https://t.me/sunnatoff_dev",
-    "- Instagram: https://www.instagram.com/sunnatoff.dev/",
+    ...SOCIALS.map((s) => `- ${s.label}: ${s.href}`),
     "",
   ];
 

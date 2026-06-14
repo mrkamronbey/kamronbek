@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
+import { SITE_URL, SITE_NAME } from "@/shared/site";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://sunnatoff.dev";
-export const SITE_NAME = "Sunnatoff.dev";
+export { SITE_URL, SITE_NAME };
 
 const OG_LOCALE: Record<string, string> = { uz: "uz_UZ", en: "en_US", ru: "ru_RU" };
 

@@ -1,6 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
+import { PERSON } from "@/shared/site";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -32,7 +33,7 @@ export async function sendContactEmail(
   try {
     await resend.emails.send({
       from:    "portfolio@sunnatoff.dev",
-      to:      "komronbek.sunnatov@mail.ru",
+      to:      PERSON.email,
       subject: subject ? `[Portfolio] ${subject}` : `[Portfolio] ${name}`,
       html: `
         <h2>Yangi xabar — Sunnatoff.dev Portfolio</h2>

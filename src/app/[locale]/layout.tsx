@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Layout as PortfolioLayout } from "@/layout";
 import { SITE_URL, SITE_NAME, localeAlternates, ogLocale } from "@/shared/seo";
+import { PERSON, SAME_AS } from "@/shared/site";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -37,13 +38,6 @@ export async function generateMetadata({
   };
 }
 
-const SAME_AS = [
-  "https://github.com/mrkamronbek",
-  "https://www.linkedin.com/in/komronbek-sunnatov-042922371/",
-  "https://t.me/sunnatoff_dev",
-  "https://www.instagram.com/sunnatoff.dev/",
-];
-
 function siteGraph(locale: string) {
   const personId = `${SITE_URL}/#person`;
   const websiteId = `${SITE_URL}/#website`;
@@ -53,18 +47,19 @@ function siteGraph(locale: string) {
       {
         "@type": "Person",
         "@id": personId,
-        name: "Komronbek Sunnatov",
-        alternateName: ["Kamronbek Sunnatov", "Sunnatov Komronbek", "Komronbek Sunnatov dasturchi"],
+        name: PERSON.name,
+        alternateName: PERSON.alternateNames,
         url: SITE_URL,
         image: `${SITE_URL}/myphoto.png`,
-        jobTitle: "Frontend Engineer",
+        jobTitle: PERSON.role,
         description:
           "Frontend Engineer with 3+ years of experience building real web and mobile products for logistics, sales and mobile-first apps using React, Next.js, TypeScript and React Native.",
-        email: "komronbek.sunnatov@mail.ru",
+        email: PERSON.email,
+        ...(PERSON.phones.length ? { telephone: PERSON.phones } : {}),
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Tashkent",
-          addressCountry: "UZ",
+          addressLocality: PERSON.location.city,
+          addressCountry: PERSON.location.country,
         },
         knowsAbout: [
           "React", "Next.js", "TypeScript", "React Native", "Redux Toolkit",

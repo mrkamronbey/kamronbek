@@ -1,4 +1,5 @@
 export { Container } from "./Container";
+export { SocialIcon } from "./SocialIcon";
 export { ThemeToggle } from "./ThemeToggle";
 export { NavLangSelector } from "./NavLangSelector";
 export { ContactSection } from "./ContactSection";
