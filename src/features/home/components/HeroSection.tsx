@@ -79,7 +79,7 @@ export function HeroSection() {
       <div className="max-md:hidden absolute inset-0 flex items-end justify-center z-10 pointer-events-none">
         <Image
           src="/myphoto.png"
-          alt="Kamronbek Sunnatov"
+          alt="Komronbek Sunnatov"
           width={700}
           height={900}
           priority
@@ -102,7 +102,7 @@ export function HeroSection() {
           <p className="font-mono text-[13px] text-muted mb-1 tracking-widest uppercase">{t("greeting")}</p>
 
           <h1 className="text-[clamp(34px,4.5vw,62px)] font-bold tracking-[-2px] leading-[1.06] mb-5">
-            Kamronbek<br />
+            Komronbek<br />
             <span className="text-accent">Sunnatov</span>
           </h1>
 
@@ -172,7 +172,7 @@ export function HeroSection() {
               >
                 <Image
                   src="/myphoto_bg.png"
-                  alt="Kamronbek Sunnatov"
+                  alt="Komronbek Sunnatov"
                   width={250}
                   height={300}
                   priority

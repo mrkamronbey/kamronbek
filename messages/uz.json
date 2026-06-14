@@ -1,4 +1,14 @@
 {
+  "meta": {
+    "home_title": "Komronbek Sunnatov — Frontend Engineer",
+    "home_desc": "Frontend Engineer — React, Next.js, TypeScript va React Native asosida logistika, savdo va mobil ilovalar uchun real mahsulotlar yarataman.",
+    "about_title": "Men haqimda",
+    "about_desc": "Komronbek Sunnatov haqida — 3+ yillik tajriba, React va React Native, logistika hamda savdo tizimlari, ish tarixi va ko'nikmalar.",
+    "projects_title": "Loyihalar",
+    "projects_desc": "Real loyihalar — Half Tank, Cosmos Driver, Cosmos TMS va Al-baraka: logistika va savdo uchun web va mobil tizimlar.",
+    "blog_title": "Blog",
+    "blog_desc": "React, TypeScript, arxitektura va zamonaviy web texnologiyalari haqida amaliy maqolalar."
+  },
   "nav": {
     "home": "Bosh sahifa",
     "services": "Xizmatlar",
@@ -29,30 +39,115 @@
     "tag": "// haqimda",
     "title": "Frontend muhandisi",
     "bio1": "Men Frontend Engineer — React & React Native asosida logistika, savdo tizimlari va mobil ilovalarda amaliy mahsulotlar yarataman. Faqat demo uchun emas — haqiqiy foydalanuvchilar uchun ishlaydigan narsalar.",
-    "bio2": "Hozirda logistika kompaniyasida haydovchi–dispetcher platformasi, yoqilg'i boshqaruvi va parking tizimlarini ishlab chiqyapman. Logistikada ishlash menga bir narsani o'rgatdi: yaxshi UI bitta kichik yaxshilanish butun jamoaning soatlab vaqtini tejashi mumkin.",
+    "bio2": "Hozirda logistika kompaniyasida haydovchilar uchun mobil ilovalar (Half Tank, Cosmos Driver) va Cosmos TMS logistika tizimini ishlab chiqyapman. Logistikada ishlash menga bir narsani o'rgatdi: yaxshi UI bitta kichik yaxshilanish butun jamoaning soatlab vaqtini tejashi mumkin.",
     "bio3": "Web va mobileda — xaritalar, real-time yangilanishlar, ko'p bosqichli formalar, dashboardlar... qaysi muammo bo'lmasin, uni toza arxitektura va silliq UX bilan hal qilaman.",
     "bio4": "Maqsadim oddiy — foydalanuvchi muammosini hal qiladigan va ishlatishdan zavq beradigan mahsulotlar yaratish.",
     "available": "Yangi imkoniyatlarga ochiqman"
   },
-  "experience": { "tag": "// tajriba", "title": "Ish tarixi" },
+  "experience": {
+    "tag": "// tajriba",
+    "title": "Ish tarixi",
+    "current": "Hozir"
+  },
   "services": {
     "tag": "// xizmatlar",
     "title": "Nima qila olaman?",
     "subtitle": "Frontend muhandisi sifatida taklif etadigan asosiy xizmatlarim",
-    "cta": "Buyurtma berish →"
+    "cta": "Buyurtma berish →",
+    "s1_title": "Web ilovalar yaratish",
+    "s1_desc": "React va Next.js asosida tezkor, zamonaviy va SEO-optimallashtirilgan web ilovalar.",
+    "s2_title": "UI/UX Implementation",
+    "s2_desc": "Figma dizaynlarini piksel-perfekt kodga aylantirish. Responsive va accessible interfeyslar.",
+    "s3_title": "Performance optimallashtirish",
+    "s3_desc": "Mavjud loyihalarni tezlashtirish: bundle size, lazy loading, Core Web Vitals yaxshilash.",
+    "s4_title": "API integratsiya",
+    "s4_desc": "REST API va GraphQL bilan ishlash, backend bilan to'liq integratsiya va state management.",
+    "s5_title": "Mobile-first dizayn",
+    "s5_desc": "Barcha qurilmalarda mukammal ko'rinadigan responsive interfeyslar yaratish.",
+    "s6_title": "Kod audit va konsultatsiya",
+    "s6_desc": "Loyiha kodini tekshirish, best practices joriy etish va arxitektura bo'yicha maslahat."
   },
-  "projects": { "tag": "// loyihalar", "title": "Tanlangan ishlar", "subtitle": "Real loyihalar va amaliy tajriba", "all": "Barchasi →" },
-  "blog": { "tag": "// blog", "title": "So'nggi maqolalar", "subtitle": "Texnologiya va frontend haqida yozaman", "all": "Barcha maqolalar →" },
+  "projects": {
+    "tag": "// loyihalar",
+    "title": "Tanlangan ishlar",
+    "subtitle": "Real loyihalar va amaliy tajriba",
+    "all": "Barchasi →"
+  },
+  "projectsPage": {
+    "badge": "{count} ta loyiha",
+    "title_pre": "Tanlangan",
+    "title_accent": "ishlarim",
+    "lead": "Real loyihalar, amaliy tajriba va texnik yechimlar — har biri muayyan muammoni hal qilish uchun yaratilgan.",
+    "stat1": "Real loyiha",
+    "stat2": "Yil tajriba",
+    "stat3": "Texnologiyalar"
+  },
+  "projectDetail": {
+    "back": "Barcha loyihalar",
+    "about": "Loyiha haqida",
+    "features": "Asosiy xususiyatlar",
+    "tech": "Texnologiyalar",
+    "links": "Havolalar",
+    "live": "Live demo",
+    "internal": "Korporativ ichki loyiha — manba kodi ochiq emas"
+  },
+  "blog": {
+    "tag": "// blog",
+    "title": "So'nggi maqolalar",
+    "subtitle": "Texnologiya va frontend haqida yozaman",
+    "all": "Barcha maqolalar →"
+  },
+  "blogPage": {
+    "badge": "{count} ta maqola",
+    "title_pre": "Texnologiya va ",
+    "title_accent": "frontend",
+    "title_post": " haqida",
+    "lead": "React, TypeScript, arxitektura va zamonaviy web texnologiyalari haqida amaliy maqolalar.",
+    "all_category": "Barchasi",
+    "count": "{count} ta maqola",
+    "empty": "Bu kategoriyada hozircha maqola yo'q"
+  },
+  "blogDetail": {
+    "back": "Barcha maqolalar",
+    "tags": "Teglar",
+    "more": "Boshqa maqolalar"
+  },
   "contact": {
     "tag": "// bog'lanish",
     "title": "Sizning g'oyangiz + mening kodim",
+    "idea": "Sizning g'oyangiz",
+    "code": "mening kodim",
     "subtitle": "Yangi loyiha, freelance hamkorlik yoki shunchaki salomlashmoqchimisiz? Murojaat qiling.",
+    "lead": "Yangi loyiha, freelance hamkorlik yoki shunchaki salomlashmoqchimisiz? Har qanday savol bilan murojaat qiling.",
     "email": "Email jo'natish",
     "open": "Yangi loyihalarga ochiqman",
     "form_title": "Xabar yuboring",
-    "form_sub": "Odatda 24 soat ichida javob beraman."
+    "form_sub": "Odatda 24 soat ichida javob beraman.",
+    "form": {
+      "name_label": "Ism",
+      "name_ph": "Komronbek Sunnatov",
+      "email_label": "Email",
+      "email_ph": "email@example.com",
+      "subject_label": "Mavzu",
+      "subject_ph": "Loyiha haqida...",
+      "message_label": "Xabar",
+      "message_ph": "Loyihangiz yoki savolingiz haqida yozing...",
+      "submit": "Xabar yuborish",
+      "sending": "Yuborilmoqda..."
+    },
+    "status": {
+      "required": "Barcha maydonlarni to'ldiring.",
+      "not_configured": "Email xizmati sozlanmagan.",
+      "failed": "Xabar yuborishda xatolik yuz berdi.",
+      "success": "Xabar muvaffaqiyatli yuborildi!"
+    }
   },
-  "footer": { "copy": "Barcha huquqlar himoyalangan", "home": "Bosh sahifa", "projects": "Loyihalar", "blog": "Blog" },
+  "footer": {
+    "copy": "Barcha huquqlar himoyalangan",
+    "home": "Bosh sahifa",
+    "projects": "Loyihalar",
+    "blog": "Blog"
+  },
   "notFound": {
     "badge": "Sahifa topilmadi",
     "title": "Bu sahifa mavjud emas",

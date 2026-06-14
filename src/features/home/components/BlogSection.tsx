@@ -1,27 +1,32 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Container, BlogCard } from "@/shared/components";
 import { blogPosts } from "@/features/blog/data/blog";
 
 export function BlogSection() {
+  const t = useTranslations("blog");
+
   return (
     <section id="blog" className="bg-canvas py-[100px]">
       <Container className="px-12 max-md:px-6">
-        <p className="font-mono text-xs text-accent tracking-[2px] uppercase mb-3">{`// blog`}</p>
+        <p className="font-mono text-xs text-accent tracking-[2px] uppercase mb-3">{t("tag")}</p>
 
         <div className="flex justify-between items-end flex-wrap gap-4 mb-16">
           <div>
             <h2 className="text-[clamp(28px,4vw,44px)] font-bold tracking-[-1px] leading-[1.1] mb-4">
-              So&apos;nggi maqolalar
+              {t("title")}
             </h2>
             <p className="text-base text-muted leading-[1.7] max-w-[500px]">
-              Texnologiya va frontend haqida yozaman
+              {t("subtitle")}
             </p>
           </div>
           <Link
             href="/blog"
             className="inline-flex items-center bg-transparent text-content font-medium text-sm px-5 py-2.5 rounded-lg no-underline border border-line transition-all hover:border-content/20 hover:bg-surface"
           >
-            Barcha maqolalar →
+            {t("all")}
           </Link>
         </div>
 

@@ -1,14 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ShoppingCart, Layers, BarChart2, BookOpen,
-  ShieldCheck, Layout, ArrowUpRight, type LucideIcon,
-} from "lucide-react";
-import type { Project } from "@/features/projects/data/projects";
-
-const ICON_MAP: Record<string, LucideIcon> = {
-  ShoppingCart, Layers, BarChart2, BookOpen, ShieldCheck, Layout,
-};
+import { ArrowUpRight, Layout } from "lucide-react";
+import { type Project, projectIcons } from "@/features/projects/data/projects";
 
 interface Props {
   project: Project;
@@ -16,7 +9,7 @@ interface Props {
 }
 
 export function ProjectCard({ project: p }: Props) {
-  const Icon = ICON_MAP[p.iconKey] ?? Layout;
+  const Icon = projectIcons[p.iconKey] ?? Layout;
 
   return (
     <Link
@@ -43,6 +36,7 @@ export function ProjectCard({ project: p }: Props) {
             src={`/projects/${p.image}`}
             alt={p.title}
             fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
           />
         ) : (

@@ -1,4 +1,14 @@
 {
+  "meta": {
+    "home_title": "Komronbek Sunnatov — Frontend Engineer",
+    "home_desc": "Frontend Engineer building real products for logistics, sales and mobile apps with React, Next.js, TypeScript and React Native.",
+    "about_title": "About",
+    "about_desc": "About Komronbek Sunnatov — 3+ years of experience with React and React Native, logistics and sales systems, work history and skills.",
+    "projects_title": "Projects",
+    "projects_desc": "Real projects — Half Tank, Cosmos Driver, Cosmos TMS and Al-baraka: web and mobile systems for logistics and sales.",
+    "blog_title": "Blog",
+    "blog_desc": "Practical articles about React, TypeScript, architecture and modern web technologies."
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
@@ -29,20 +39,33 @@
     "tag": "// about",
     "title": "Frontend engineer",
     "bio1": "I'm a Frontend Engineer who enjoys building real, practical products — especially in logistics, sales systems, and mobile-first apps. Not just \"for demo\" — things that actually work for real users.",
-    "bio2": "Right now I'm building a driver–dispatcher platform, fuel management system, and parking tools at a logistics company. Working in logistics taught me one thing: a single good UI improvement can save an entire team hours of daily work.",
+    "bio2": "Right now I'm building mobile apps for drivers (Half Tank, Cosmos Driver) and the Cosmos TMS logistics system at a logistics company. Working in logistics taught me one thing: a single good UI improvement can save an entire team hours of daily work.",
     "bio3": "Web or mobile — maps, real-time updates, multi-step forms, dashboards — whatever the problem, I solve it with clean architecture and smooth UX.",
     "bio4": "My goal is simple — build products that solve real problems and feel good to use.",
     "available": "Open to new opportunities"
   },
   "experience": {
     "tag": "// experience",
-    "title": "Work history"
+    "title": "Work history",
+    "current": "Current"
   },
   "services": {
     "tag": "// services",
     "title": "What I can do",
     "subtitle": "Core services I offer as a frontend engineer",
-    "cta": "Request →"
+    "cta": "Request →",
+    "s1_title": "Web app development",
+    "s1_desc": "Fast, modern and SEO-optimized web apps built with React and Next.js.",
+    "s2_title": "UI/UX Implementation",
+    "s2_desc": "Turning Figma designs into pixel-perfect code. Responsive and accessible interfaces.",
+    "s3_title": "Performance optimization",
+    "s3_desc": "Speeding up existing projects: bundle size, lazy loading, Core Web Vitals.",
+    "s4_title": "API integration",
+    "s4_desc": "Working with REST API and GraphQL, full backend integration and state management.",
+    "s5_title": "Mobile-first design",
+    "s5_desc": "Building responsive interfaces that look perfect on every device.",
+    "s6_title": "Code audit & consulting",
+    "s6_desc": "Reviewing project code, introducing best practices and architecture advice."
   },
   "projects": {
     "tag": "// projects",
@@ -50,20 +73,74 @@
     "subtitle": "Real projects and practical experience",
     "all": "All projects →"
   },
+  "projectsPage": {
+    "badge": "{count} projects",
+    "title_pre": "Selected",
+    "title_accent": "works",
+    "lead": "Real projects, practical experience and technical solutions — each built to solve a specific problem.",
+    "stat1": "Real projects",
+    "stat2": "Years exp",
+    "stat3": "Technologies"
+  },
+  "projectDetail": {
+    "back": "All projects",
+    "about": "About the project",
+    "features": "Key features",
+    "tech": "Technologies",
+    "links": "Links",
+    "live": "Live demo",
+    "internal": "Internal company project — source code is private"
+  },
   "blog": {
     "tag": "// blog",
     "title": "Latest articles",
     "subtitle": "I write about technology and frontend",
     "all": "All articles →"
   },
+  "blogPage": {
+    "badge": "{count} articles",
+    "title_pre": "About technology and ",
+    "title_accent": "frontend",
+    "title_post": "",
+    "lead": "Practical articles about React, TypeScript, architecture and modern web technologies.",
+    "all_category": "All",
+    "count": "{count} articles",
+    "empty": "No articles in this category yet"
+  },
+  "blogDetail": {
+    "back": "All articles",
+    "tags": "Tags",
+    "more": "More articles"
+  },
   "contact": {
     "tag": "// contact",
     "title": "Your idea + my code",
+    "idea": "Your idea",
+    "code": "my code",
     "subtitle": "New project, freelance collaboration or just saying hello? Get in touch.",
+    "lead": "New project, freelance collaboration or just saying hello? Reach out with any question.",
     "email": "Send email",
     "open": "Open to new opportunities",
     "form_title": "Send a message",
-    "form_sub": "I usually respond within 24 hours."
+    "form_sub": "I usually respond within 24 hours.",
+    "form": {
+      "name_label": "Name",
+      "name_ph": "Komronbek Sunnatov",
+      "email_label": "Email",
+      "email_ph": "email@example.com",
+      "subject_label": "Subject",
+      "subject_ph": "About a project...",
+      "message_label": "Message",
+      "message_ph": "Tell me about your project or question...",
+      "submit": "Send message",
+      "sending": "Sending..."
+    },
+    "status": {
+      "required": "Please fill in all fields.",
+      "not_configured": "Email service is not configured.",
+      "failed": "An error occurred while sending the message.",
+      "success": "Message sent successfully!"
+    }
   },
   "footer": {
     "copy": "All rights reserved",

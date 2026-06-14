@@ -110,7 +110,8 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-export const CATEGORIES = ["Barchasi", "React", "TypeScript", "CSS", "Performance"];
+/** "all" is a sentinel resolved to a translated label in the UI; the rest are proper nouns. */
+export const CATEGORIES = ["all", "React", "TypeScript", "CSS", "Performance"];
 
 export function getPostBySlug(slug: string) {
   return blogPosts.find((p) => p.slug === slug);

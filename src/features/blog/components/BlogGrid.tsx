@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { BlogCard } from "@/shared/components";
 import { blogPosts, CATEGORIES } from "../data/blog";
 
 export function BlogGrid() {
-  const [active, setActive] = useState("Barchasi");
+  const t = useTranslations("blogPage");
+  const [active, setActive] = useState("all");
 
-  const filtered = active === "Barchasi"
+  const filtered = active === "all"
     ? blogPosts
     : blogPosts.filter((p) => p.category === active);
 
@@ -27,18 +29,18 @@ export function BlogGrid() {
                   : "text-muted border-line hover:text-content hover:border-accent/30 bg-transparent"
               }`}
             >
-              {cat}
+              {cat === "all" ? t("all_category") : cat}
             </button>
           ))}
           <span className="ml-auto font-mono text-[13px] text-muted self-center">
-            {filtered.length} ta maqola
+            {t("count", { count: filtered.length })}
           </span>
         </div>
 
         {/* Blog grid */}
         {filtered.length === 0 ? (
           <div className="text-center py-20 text-muted font-mono text-sm">
-            Bu kategoriyada hozircha maqola yo&apos;q
+            {t("empty")}
           </div>
         ) : (
           <div className="grid grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1 gap-5">
@@ -46,7 +48,7 @@ export function BlogGrid() {
               <BlogCard
                 key={post.slug}
                 post={post}
-                featured={i === 0 && active === "Barchasi"}
+                featured={i === 0 && active === "all"}
               />
             ))}
           </div>

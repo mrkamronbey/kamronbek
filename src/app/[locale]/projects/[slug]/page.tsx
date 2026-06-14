@@ -1,11 +1,15 @@
+import type { Metadata } from "next";
 import NextImage from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
+import { ArrowLeft, ExternalLink, CheckCircle2, Lock, Layout } from "lucide-react";
+import { Container } from "@/shared/components";
 import {
-  ShoppingCart, Layers, BarChart2, BookOpen,
-  ShieldCheck, Layout, ArrowLeft, ExternalLink,
-  CheckCircle2, type LucideIcon,
-} from "lucide-react";
+  getProjectBySlug, projectSlugs, projectIcons,
+} from "@/features/projects/data/projects";
+import { buildMetadata, SITE_URL, SITE_NAME } from "@/shared/seo";
+import type { Locale } from "@/i18n/routing";
 
 function GitHubIcon() {
   return (
@@ -14,33 +18,49 @@ function GitHubIcon() {
     </svg>
   );
 }
-import { Container } from "@/shared/components";
-import { getProjectBySlug, projects } from "@/features/projects/data/projects";
-
-const ICON_MAP: Record<string, LucideIcon> = {
-  ShoppingCart, Layers, BarChart2, BookOpen, ShieldCheck, Layout,
-};
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projectSlugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const project = getProjectBySlug(slug, locale);
   if (!project) return {};
-  return { title: `${project.title} — Sunnatoff.dev` };
+  return buildMetadata({
+    locale,
+    path: `/projects/${slug}`,
+    title: project.title,
+    description: project.desc,
+    images: project.image ? [`/projects/${project.image}`] : undefined,
+  });
 }
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
+export default async function ProjectDetailPage({ params }: { params: Promise<{ locale: Locale; slug: string }> }) {
+  const { locale, slug } = await params;
+  const project = getProjectBySlug(slug, locale);
   if (!project) notFound();
 
-  const Icon = ICON_MAP[project.iconKey] ?? Layout;
+  const t = await getTranslations("projectDetail");
+  const tm = await getTranslations({ locale, namespace: "meta" });
+  const Icon = projectIcons[project.iconKey] ?? Layout;
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: tm("projects_title"), item: `${SITE_URL}/${locale}/projects` },
+      { "@type": "ListItem", position: 3, name: project.title, item: `${SITE_URL}/${locale}/projects/${slug}` },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-canvas">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       {/* Header */}
       <div
         className="py-20 pt-32 relative overflow-hidden"
@@ -55,7 +75,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             href="/projects"
             className="inline-flex items-center gap-2 text-sm text-muted hover:text-content transition-colors mb-8 no-underline"
           >
-            <ArrowLeft size={15} /> Barcha loyihalar
+            <ArrowLeft size={15} /> {t("back")}
           </Link>
 
           <div className="flex items-start gap-6 max-md:flex-col">
@@ -86,11 +106,17 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {/* Preview image */}
       <Container className="px-12 max-md:px-6 -mt-6">
         <div
-          className="w-full h-[300px] max-md:h-[200px] rounded-2xl overflow-hidden border border-line relative flex items-center justify-center"
+          className="w-full aspect-[16/9] rounded-2xl overflow-hidden border border-line relative flex items-center justify-center"
           style={{ background: project.bgAccent }}
         >
           {project.image ? (
-            <NextImage src={`/projects/${project.image}`} alt={project.title} fill className="object-cover" />
+            <NextImage
+              src={`/projects/${project.image}`}
+              alt={project.title}
+              fill
+              sizes="(max-width: 1280px) 100vw, 1200px"
+              className="object-cover"
+            />
           ) : (
             <>
               <div
@@ -101,9 +127,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <div className="absolute inset-0 hero-bg-grid opacity-40" />
               {/* Floating tags */}
               <div className="relative flex flex-wrap gap-3 items-center justify-center px-8">
-                {project.tags.map((t, i) => (
+                {project.tags.map((tag, i) => (
                   <span
-                    key={t}
+                    key={tag}
                     className="font-mono text-[13px] px-3 py-1.5 rounded-lg border backdrop-blur-sm"
                     style={{
                       color: project.accent,
@@ -112,7 +138,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                       transform: `rotate(${(i % 3 - 1) * 2}deg)`,
                     }}
                   >
-                    {t}
+                    {tag}
                   </span>
                 ))}
               </div>
@@ -134,10 +160,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
           {/* Left: Details */}
           <div>
-            <h2 className="text-xl font-bold mb-4">Loyiha haqida</h2>
+            <h2 className="text-xl font-bold mb-4">{t("about")}</h2>
             <p className="text-base text-muted leading-[1.8] mb-10">{project.longDesc}</p>
 
-            <h2 className="text-xl font-bold mb-4">Asosiy xususiyatlar</h2>
+            <h2 className="text-xl font-bold mb-4">{t("features")}</h2>
             <ul className="space-y-3 mb-10">
               {project.features.map((f) => (
                 <li key={f} className="flex items-start gap-3">
@@ -148,14 +174,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </ul>
 
             {/* Tags */}
-            <h2 className="text-xl font-bold mb-4">Texnologiyalar</h2>
+            <h2 className="text-xl font-bold mb-4">{t("tech")}</h2>
             <div className="flex flex-wrap gap-2">
-              {project.tags.map((t) => (
+              {project.tags.map((tag) => (
                 <span
-                  key={t}
+                  key={tag}
                   className="font-mono text-[13px] px-3 py-1.5 rounded-lg border border-line bg-elevated text-content"
                 >
-                  {t}
+                  {tag}
                 </span>
               ))}
             </div>
@@ -163,7 +189,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
           {/* Right: Links */}
           <div className="space-y-3">
-            <h3 className="font-mono text-xs text-muted tracking-[2px] uppercase mb-4">Havolalar</h3>
+            <h3 className="font-mono text-xs text-muted tracking-[2px] uppercase mb-4">{t("links")}</h3>
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
@@ -184,8 +210,14 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
                 className="flex items-center gap-3 p-4 bg-accent text-white rounded-lg no-underline transition-all hover:bg-[#4a7de0]"
               >
                 <ExternalLink size={18} />
-                <span className="font-medium text-sm">Live demo</span>
+                <span className="font-medium text-sm">{t("live")}</span>
               </a>
+            )}
+            {project.internal && !project.githubUrl && !project.liveUrl && (
+              <div className="flex items-start gap-3 p-4 bg-elevated border border-line rounded-lg text-muted">
+                <Lock size={16} className="flex-shrink-0 mt-0.5" />
+                <span className="text-[13px] leading-[1.6]">{t("internal")}</span>
+              </div>
             )}
           </div>
 

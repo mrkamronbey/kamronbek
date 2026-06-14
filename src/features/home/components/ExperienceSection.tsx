@@ -59,7 +59,7 @@ export function ExperienceSection() {
                         {item.current && (
                           <span className="inline-flex items-center gap-1 font-mono text-[10px] text-success bg-success/[0.1] border border-success/20 px-2 py-0.5 rounded-full">
                             <span className="w-1 h-1 rounded-full bg-success animate-blink" />
-                            {locale === "ru" ? "Сейчас" : locale === "en" ? "Current" : "Hozir"}
+                            {t("current")}
                           </span>
                         )}
                       </div>

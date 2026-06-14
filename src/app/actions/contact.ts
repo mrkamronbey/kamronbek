@@ -4,9 +4,12 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+export type ContactStatus = "idle" | "loading" | "success" | "error";
+
 export interface ContactState {
-  status: "idle" | "loading" | "success" | "error";
-  message?: string;
+  status: ContactStatus;
+  /** Translation key under the `contact.status` namespace (resolved on the client). */
+  messageKey?: "required" | "not_configured" | "failed" | "success";
 }
 
 export async function sendContactEmail(
@@ -19,18 +22,18 @@ export async function sendContactEmail(
   const message = (formData.get("message") as string)?.trim();
 
   if (!name || !email || !message) {
-    return { status: "error", message: "Barcha maydonlarni to'ldiring." };
+    return { status: "error", messageKey: "required" };
   }
 
   if (!process.env.RESEND_API_KEY) {
-    return { status: "error", message: "Email xizmati sozlanmagan." };
+    return { status: "error", messageKey: "not_configured" };
   }
 
   try {
     await resend.emails.send({
       from:    "portfolio@sunnatoff.dev",
       to:      "komronbek.sunnatov@mail.ru",
-      subject: subject ? `[Portfolio] ${subject}` : `[Portfolio] ${name}dan xabar`,
+      subject: subject ? `[Portfolio] ${subject}` : `[Portfolio] ${name}`,
       html: `
         <h2>Yangi xabar — Sunnatoff.dev Portfolio</h2>
         <p><strong>Ism:</strong> ${name}</p>
@@ -40,8 +43,8 @@ export async function sendContactEmail(
         <p>${message.replace(/\n/g, "<br/>")}</p>
       `,
     });
-    return { status: "success", message: "Xabar muvaffaqiyatli yuborildi!" };
+    return { status: "success", messageKey: "success" };
   } catch {
-    return { status: "error", message: "Xabar yuborishda xatolik yuz berdi." };
+    return { status: "error", messageKey: "failed" };
   }
 }

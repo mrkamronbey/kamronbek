@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Container } from "./Container";
 import { ContactForm } from "./ContactForm";
 
@@ -71,19 +72,21 @@ const CONTACTS = [
 ];
 
 export function ContactSection() {
+  const t = useTranslations("contact");
+
   return (
     <section id="contact" className="relative bg-canvas py-[100px] overflow-hidden">
       <div className="glow-blue absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] opacity-25 -z-0" />
 
       <Container className="relative z-10 px-12 max-md:px-6">
         <p className="font-mono text-xs text-accent tracking-[2px] uppercase mb-6 text-center">
-          {`// bog'lanish`}
+          {t("tag")}
         </p>
 
         <h2 className="whitespace-nowrap max-md:whitespace-normal text-[clamp(24px,3.8vw,52px)] font-bold tracking-[-2px] leading-[1.1] text-center mb-16">
-          <span className="text-accent2">Sizning g&apos;oyangiz</span>
+          <span className="text-accent2">{t("idea")}</span>
           <span className="font-mono text-muted mx-4 text-[0.7em] font-normal">+</span>
-          <span className="text-accent">mening kodim</span>
+          <span className="text-accent">{t("code")}</span>
         </h2>
 
         <div className="grid grid-cols-[1fr_1.3fr] max-lg:grid-cols-1 gap-16 text-left items-start">
@@ -91,8 +94,7 @@ export function ContactSection() {
           {/* Left — links + badge */}
           <div>
             <p className="text-[16px] text-muted leading-[1.8] mb-8">
-              Yangi loyiha, freelance hamkorlik yoki shunchaki salomlashmoqchimisiz?
-              Har qanday savol bilan murojaat qiling.
+              {t("lead")}
             </p>
 
             {/* Social cards */}
@@ -122,14 +124,14 @@ export function ContactSection() {
 
             <div className="inline-flex items-center gap-2 text-[13px] text-success bg-success/[0.08] border border-success/20 px-3.5 py-1.5 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-success animate-blink" />
-              Yangi loyihalarga ochiqman
+              {t("open")}
             </div>
           </div>
 
           {/* Right — Contact Form */}
           <div className="bg-elevated border border-line rounded-xl p-8 max-md:p-5">
-            <h3 className="text-[17px] font-bold mb-1">Xabar yuboring</h3>
-            <p className="text-sm text-muted mb-6">Odatda 24 soat ichida javob beraman.</p>
+            <h3 className="text-[17px] font-bold mb-1">{t("form_title")}</h3>
+            <p className="text-sm text-muted mb-6">{t("form_sub")}</p>
             <ContactForm />
           </div>
           </div>

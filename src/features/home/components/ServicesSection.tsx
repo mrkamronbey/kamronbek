@@ -1,82 +1,45 @@
+"use client";
+
 import Link from "next/link";
 import {
   Monitor, Palette, Zap, Plug, Smartphone, SearchCode,
   ArrowUpRight,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Container } from "@/shared/components";
 
 const SERVICES = [
-  {
-    icon: Monitor,
-    accent: "#5b8def",
-    bgAccent: "rgba(91,141,239,0.12)",
-    title: "Web ilovalar yaratish",
-    desc: "React va Next.js asosida tezkor, zamonaviy va SEO-optimallashtirilgan web ilovalar.",
-    tags: ["React", "Next.js", "TypeScript"],
-  },
-  {
-    icon: Palette,
-    accent: "#a78bfa",
-    bgAccent: "rgba(167,139,250,0.12)",
-    title: "UI/UX Implementation",
-    desc: "Figma dizaynlarini piksel-perfekt kodga aylantirish. Responsive va accessible interfeyslar.",
-    tags: ["Tailwind CSS", "Figma", "SCSS"],
-  },
-  {
-    icon: Zap,
-    accent: "#f59e0b",
-    bgAccent: "rgba(245,158,11,0.12)",
-    title: "Performance optimallashtirish",
-    desc: "Mavjud loyihalarni tezlashtirish: bundle size, lazy loading, Core Web Vitals yaxshilash.",
-    tags: ["Lighthouse", "Webpack", "Vite"],
-  },
-  {
-    icon: Plug,
-    accent: "#34d399",
-    bgAccent: "rgba(52,211,153,0.12)",
-    title: "API integratsiya",
-    desc: "REST API va GraphQL bilan ishlash, backend bilan to'liq integratsiya va state management.",
-    tags: ["REST API", "GraphQL", "Redux"],
-  },
-  {
-    icon: Smartphone,
-    accent: "#f472b6",
-    bgAccent: "rgba(244,114,182,0.12)",
-    title: "Mobile-first dizayn",
-    desc: "Barcha qurilmalarda mukammal ko'rinadigan responsive interfeyslar yaratish.",
-    tags: ["Responsive", "CSS Grid", "Flexbox"],
-  },
-  {
-    icon: SearchCode,
-    accent: "#fb923c",
-    bgAccent: "rgba(251,146,60,0.12)",
-    title: "Kod audit va konsultatsiya",
-    desc: "Loyiha kodini tekshirish, best practices joriy etish va arxitektura bo'yicha maslahat.",
-    tags: ["Code Review", "Architecture", "Mentoring"],
-  },
+  { key: "s1", icon: Monitor,    accent: "#5b8def", bgAccent: "rgba(91,141,239,0.12)", tags: ["React", "Next.js", "TypeScript"] },
+  { key: "s2", icon: Palette,    accent: "#a78bfa", bgAccent: "rgba(167,139,250,0.12)", tags: ["Tailwind CSS", "Figma", "SCSS"] },
+  { key: "s3", icon: Zap,        accent: "#f59e0b", bgAccent: "rgba(245,158,11,0.12)", tags: ["Lighthouse", "Webpack", "Vite"] },
+  { key: "s4", icon: Plug,       accent: "#34d399", bgAccent: "rgba(52,211,153,0.12)", tags: ["REST API", "GraphQL", "Redux"] },
+  { key: "s5", icon: Smartphone, accent: "#f472b6", bgAccent: "rgba(244,114,182,0.12)", tags: ["Responsive", "CSS Grid", "Flexbox"] },
+  { key: "s6", icon: SearchCode, accent: "#fb923c", bgAccent: "rgba(251,146,60,0.12)", tags: ["Code Review", "Architecture", "Mentoring"] },
 ];
 
 export function ServicesSection() {
+  const t = useTranslations("services");
+
   return (
     <section id="services" className="bg-surface py-[100px]">
       <Container className="px-12 max-md:px-6">
         <p className="font-mono text-xs text-accent tracking-[2px] uppercase mb-3">
-          {`// xizmatlar`}
+          {t("tag")}
         </p>
         <div className="flex justify-between items-end flex-wrap gap-4 mb-16">
           <div>
             <h2 className="text-[clamp(28px,4vw,44px)] font-bold tracking-[-1px] leading-[1.1] mb-4">
-              Nima qila olaman?
+              {t("title")}
             </h2>
             <p className="text-base text-muted leading-[1.7] max-w-[480px]">
-              Frontend muhandisi sifatida taklif etadigan asosiy xizmatlarim
+              {t("subtitle")}
             </p>
           </div>
           <Link
             href="/#contact"
             className="inline-flex items-center gap-2 bg-accent text-white font-semibold text-sm px-5 py-2.5 rounded-lg no-underline transition-all hover:bg-[#4a7de0] hover:-translate-y-px"
           >
-            Buyurtma berish →
+            {t("cta")}
           </Link>
         </div>
 
@@ -85,7 +48,7 @@ export function ServicesSection() {
             const Icon = s.icon;
             return (
               <div
-                key={s.title}
+                key={s.key}
                 className="group relative bg-elevated border border-line rounded-lg p-6 transition-all duration-300 overflow-hidden cursor-default"
                 style={{
                   ["--svc-accent" as string]: s.accent,
@@ -124,7 +87,7 @@ export function ServicesSection() {
                     style={{ color: "var(--color-content)" }}
                   >
                     <span className="group-hover:[color:var(--svc-accent)] transition-colors duration-300">
-                      {s.title}
+                      {t(`${s.key}_title`)}
                     </span>
                   </h3>
                   <ArrowUpRight
@@ -134,16 +97,16 @@ export function ServicesSection() {
                   />
                 </div>
 
-                <p className="text-sm text-muted leading-[1.7] mb-5">{s.desc}</p>
+                <p className="text-sm text-muted leading-[1.7] mb-5">{t(`${s.key}_desc`)}</p>
 
                 {/* Tags */}
                 <div className="flex gap-1.5 flex-wrap">
-                  {s.tags.map((t) => (
+                  {s.tags.map((tag) => (
                     <span
-                      key={t}
+                      key={tag}
                       className="font-mono text-[11px] px-2 py-0.5 rounded border bg-canvas text-muted border-line transition-colors duration-300 group-hover:border-[color:var(--svc-accent)]/20"
                     >
-                      {t}
+                      {tag}
                     </span>
                   ))}
                 </div>

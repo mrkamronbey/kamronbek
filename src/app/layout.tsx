@@ -1,5 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geologica, Space_Mono, JetBrains_Mono } from "next/font/google";
+import { getLocale } from "next-intl/server";
+import { SITE_URL, SITE_NAME } from "@/shared/seo";
 import "./globals.css";
 
 const geologica = Geologica({
@@ -24,13 +26,28 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sunnatoff.dev — Frontend Engineer",
-  description: "Kamronbek Sunnatov — Frontend Engineer portfolio",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Komronbek Sunnatov — Frontend Engineer",
+    template: `%s · ${SITE_NAME}`,
+  },
+  description: "Komronbek Sunnatov — Frontend Engineer portfolio",
+  applicationName: SITE_NAME,
+  authors: [{ name: "Komronbek Sunnatov", url: SITE_URL }],
+  creator: "Komronbek Sunnatov",
+  openGraph: { type: "website", siteName: SITE_NAME, images: ["/og.png"] },
+  twitter: { card: "summary_large_image", images: ["/og.png"] },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport: Viewport = {
+  themeColor: "#0a0a0f",
+};
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale();
+
   return (
-    <html lang="uz" suppressHydrationWarning
+    <html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth"
       className={`${geologica.variable} ${spaceMono.variable} ${jetbrainsMono.variable}`}
     >
       <body>{children}</body>

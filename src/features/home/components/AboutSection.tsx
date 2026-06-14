@@ -32,13 +32,13 @@ export function AboutSection() {
             <div className="flex items-center gap-4 mb-6">
               <Image
                 src="/myphoto.png"
-                alt="Kamronbek Sunnatov"
+                alt="Komronbek Sunnatov"
                 width={56}
                 height={56}
                 className="w-14 h-14 rounded-full object-cover object-top border-2 border-accent flex-shrink-0"
               />
               <div>
-                <p className="font-bold text-lg text-content">Kamronbek Sunnatov</p>
+                <p className="font-bold text-lg text-content">Komronbek Sunnatov</p>
                 <p className="text-[13px] text-muted font-mono">
                   Frontend Engineer | React & React Native
                 </p>

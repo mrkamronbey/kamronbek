@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { ArrowLeft, Clock, Tag } from "lucide-react";
 import { Code2, Braces, Palette, Zap, type LucideIcon } from "lucide-react";
 import { Container, ReadingProgress } from "@/shared/components";
 import { getPostBySlug, blogPosts } from "@/features/blog/data/blog";
+import { buildMetadata, SITE_URL, SITE_NAME } from "@/shared/seo";
 
 const CATEGORY_META: Record<string, { icon: LucideIcon; accent: string; bg: string }> = {
   React:       { icon: Code2,   accent: "#61dafb", bg: "rgba(97,218,251,0.10)" },
@@ -16,23 +19,61 @@ export function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
-  return { title: `${post.title} — Sunnatoff.dev` };
+  return buildMetadata({
+    locale,
+    path: `/blog/${slug}`,
+    title: post.title,
+    description: post.excerpt,
+    ogType: "article",
+  });
 }
 
-export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function BlogDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale, slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const t = await getTranslations("blogDetail");
+  const tm = await getTranslations({ locale, namespace: "meta" });
   const meta = CATEGORY_META[post.category] ?? CATEGORY_META.React;
   const Icon = meta.icon;
 
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: SITE_NAME, item: `${SITE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: tm("blog_title"), item: `${SITE_URL}/${locale}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${SITE_URL}/${locale}/blog/${post.slug}` },
+    ],
+  };
+
+  const blogLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    inLanguage: locale,
+    keywords: post.tags.join(", "),
+    author: { "@type": "Person", name: "Komronbek Sunnatov", url: SITE_URL },
+    publisher: { "@type": "Person", name: "Komronbek Sunnatov" },
+    mainEntityOfPage: `${SITE_URL}/${locale}/blog/${post.slug}`,
+  };
+
   return (
     <div className="min-h-screen bg-canvas">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       <ReadingProgress />
       {/* Header */}
       <div className="py-20 pt-32 relative overflow-hidden" style={{ background: meta.bg }}>
@@ -45,7 +86,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
             href="/blog"
             className="inline-flex items-center gap-2 text-sm text-muted hover:text-content transition-colors mb-8 no-underline"
           >
-            <ArrowLeft size={15} /> Barcha maqolalar
+            <ArrowLeft size={15} /> {t("back")}
           </Link>
 
           <div className="flex items-center gap-3 mb-5">
@@ -60,7 +101,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               <Clock size={11} />
               {post.readTime}
             </span>
-            <span className="font-mono text-[12px] text-muted">{post.date}</span>
+            <time className="font-mono text-[12px] text-muted">{post.date}</time>
           </div>
 
           <h1 className="text-[clamp(26px,4vw,48px)] font-bold tracking-[-1.5px] leading-[1.12] mb-4 max-w-[700px]">
@@ -125,7 +166,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
           <aside className="space-y-6 max-lg:border-t max-lg:border-line max-lg:pt-8">
             <div>
               <h3 className="font-mono text-xs text-muted tracking-[2px] uppercase mb-3">
-                <Tag size={11} className="inline mr-1.5" />Teglar
+                <Tag size={11} className="inline mr-1.5" />{t("tags")}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((t) => (
@@ -141,7 +182,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
 
             <div>
               <h3 className="font-mono text-xs text-muted tracking-[2px] uppercase mb-3">
-                Boshqa maqolalar
+                {t("more")}
               </h3>
               <div className="space-y-2">
                 {blogPosts
