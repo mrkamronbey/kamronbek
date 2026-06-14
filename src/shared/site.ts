@@ -12,7 +12,7 @@ export const PERSON = {
   role: "Frontend Engineer",
   email: "komronbek.sunnatov@mail.ru",
   /** Displayable phone numbers. Empty array hides them everywhere. */
-  phones: ["+998 95 002 37 52", "+998 94 360 01 17"],
+  phones: ["+998 95 002 37 52", "+998 93 360 01 17"],
   location: { city: "Tashkent", country: "UZ", label: "Tashkent, Uzbekistan" },
 };
 
